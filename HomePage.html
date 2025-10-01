@@ -1,0 +1,2528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KATERERA JUNIOR SCHOOL</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+
+
+       /* Hamburger Icon */
+       .hamburger {
+  display: none; /* Show Hamburger Only on Mobile */
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 15px;
+  z-index: 1001;
+}
+
+.hamburger-box {
+  display: inline-block;
+  width: 30px;
+  height: 24px;
+  position: relative;
+}
+
+.hamburger-inner {
+  width: 100%;
+  height: 3px;
+  background: #000;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.2s;
+}
+
+.hamburger-inner::before,
+.hamburger-inner::after {
+  content: '';
+  width: 100%;
+  height: 3px;
+  background: #000;
+  position: absolute;
+  left: 0;
+  transition: transform 0.3s;
+}
+
+.hamburger-inner::before {
+  top: -8px;
+}
+
+.hamburger-inner::after {
+  top: 8px;
+}
+
+/* Active State (X Shape) */
+.hamburger.is-active .hamburger-inner {
+  background: transparent;
+}
+
+.hamburger.is-active .hamburger-inner::before {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.is-active .hamburger-inner::after {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Mobile Menu */
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 80%;
+  max-width: 300px;
+  height: 100vh;
+  background: #fff;
+  z-index: 1000;
+  transition: left 0.3s;
+  overflow-y: auto;
+}
+
+.mobile-nav.active {
+  left: 0;
+}
+
+.mobile-nav ul {
+  padding: 20px;
+  list-style: none;
+}
+
+.mobile-nav li {
+  margin: 15px 0;
+}
+
+.mobile-nav a {
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+}
+
+/* Submenu Styling */
+.mobile-nav .submenu ul {
+  padding-left: 20px;
+  display: none;
+}
+
+.mobile-nav .submenu.active ul {
+  display: block;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Show Hamburger Only on Mobile */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+}
+
+
+
+
+
+
+        /* Smooth scrolling for the entire site */
+html {
+  scroll-behavior: smooth;
+}
+
+        
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, green,green);
+            color:white;
+            padding: 1rem 0;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #f39c12;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1579952363872-2898a6c4f72d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+
+        .slider{
+            position: relative;
+            width:600px;
+            height:400px;
+            overflow: hiden;
+
+        }
+.slides img{
+    width: 100%;
+    height: 100%;
+    display:none;
+    position: absolute;
+}
+.slides img.active{
+    display: block;
+
+}
+
+
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #f39c12;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        marquee{color:white}
+        marquee{font-size:600;}
+
+        .btn:hover {
+            background: #e67e22;
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            color: #2c1e72;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Team Section */
+        .team {
+            padding: 4rem 0;
+            background: #f9f9f9;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-member img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .member-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .member-info h3 {
+            margin-bottom: 0.5rem;
+            color: #1e3c72;
+        }
+
+        .member-info p {
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            background: green;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .social-links {
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #f39c12;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: #1e3c72;
+                padding: 1rem;
+                z-index: 100;
+                
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+                color: white;
+                font-size: 1.5rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+        }
+
+
+        .slider-container {
+            width: 100%;
+            max-width: 800px;
+            height: 500px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+
+/* Base styles */
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  /*background-color: #ce2d2d;*/
+  justify-content: center;
+  gap: 30px;
+}
+
+.menu-item {
+  position: relative;
+}
+
+.menu-item > a {
+  text-decoration: none;
+  display: block;
+  padding: 1px 10px;
+  color: #f3f1f1;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.menu-item > a:hover {
+  background-color: #0073e6;
+  color: #fff;
+}
+
+/* Submenu hidden by default */
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  list-style: none;
+  padding: 10px 0;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  min-width: 200px;
+  z-index: 999;
+}
+
+/* Show submenu on hover */
+.menu-item:hover .submenu {
+  display: block;
+}
+
+/* Submenu items */
+.submenu li a {
+  display: block;
+  padding: 10px 20px;
+  color: #333;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.submenu li a:hover {
+  background-color: #f2f2f2;
+  color: #2e00e6;
+}  
+
+        /* Dots indicator */
+        .dots-container {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.hamburger {
+  cursor: pointer;
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display:flex;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+   
+    width: 100%;
+    padding: 10px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}
+
+
+
+/* CSS code word graphics */
+/* Base Styles 
+.hero-container {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(45deg, green, blue);
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+/* Text Animations 
+.text-reveal {
+  position: relative;
+  z-index: 2;
+}
+
+.future-3d {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  color: #fff;
+  text-shadow: 4px 4px 0 #e94560,
+             8px 8px 0 rgba(233, 69, 96, 0.5);
+  transform: perspective(1000px) rotateX(20deg);
+  margin-bottom: 2rem;
+  animation: float 6s ease-in-out infinite;
+}
+
+.school-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  color: greenyellow;
+  letter-spacing: 0.1em;
+  transform: skew(-15deg);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  animation: slideIn 1s ease-out;
+}
+
+.leading-text {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  background: linear-gradient(45deg, #fff, #e94560);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1.2;
+  margin: 2rem 0;
+  animation: textGlow 2s infinite alternate;
+}
+
+.motto-container {
+  perspective: 1000px;
+}
+
+.motto-1, .motto-2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  display: inline-block;
+  margin-right: 1rem;
+  transform-style: preserve-3d;
+}
+
+.motto-1 {
+  color: #fff;
+  animation: rotateY 8s linear infinite;
+}
+
+.motto-2 {
+  color: #e94560;
+  animation: rotateX 8s linear infinite;
+  position: absolute;
+}
+
+/* Graphic Elements 
+.glowing-orb {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle at 50% 50%, 
+    rgba(233, 69, 96, 0.4) 0%, 
+    rgba(233, 69, 96, 0.1) 50%,
+    transparent 100%);
+  filter: blur(60px);
+  position: absolute;
+  animation: orbFloat 8s ease-in-out infinite;
+}
+
+.abstract-shape {
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(45deg, #e94560, #16213e);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  mask-image: radial-gradient(circle at center, black 30%, transparent 70%);
+  animation: shapeRotate 20s linear infinite;
+}
+
+/* Animations 
+@keyframes float {
+  0%, 100% { transform: translateY(0) perspective(1000px) rotateX(20deg); }
+  50% { transform: translateY(-20px) perspective(1000px) rotateX(25deg); }
+}
+
+@keyframes textGlow {
+  from { text-shadow: 0 0 10px rgba(233, 69, 96, 0.3); }
+  to { text-shadow: 0 0 20px rgba(233, 69, 96, 0.6); }
+}
+
+@keyframes rotateY {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+}
+
+@keyframes rotateX {
+  from { transform: rotateX(0deg); }
+  to { transform: rotateX(360deg); }
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(50px, 50px); }
+  75% { transform: translate(-50px, -50px); }
+}
+
+@keyframes shapeRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive Design 
+@media (max-width: 768px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .abstract-shape {
+    width: 300px;
+    height: 300px;
+  }
+}
+ CSS code word graphics ends here */
+
+
+
+
+/* CSS for Quick Links Section */
+.quick-links {
+  background: rgb(248, 2, 182);
+  padding: 5px;
+  text-align: center;
+}
+
+.quick-links h3 {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.quick-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.quick-link {
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-decoration: none;
+  color: #34495e;
+}
+
+.quick-link:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.quick-link i {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #3498db;
+}
+
+/* Dropdown for Subpages */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 0.5rem;
+  min-width: 180px;
+  z-index: 1000;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 0.5rem;
+  color: #34495e;
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+  background: #f8f9fa;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .quick-links-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dropdown-menu {
+    position: static;
+    transform: none;
+    margin-top: 0.5rem;
+  }
+}
+/* CSS for quick links section ends here */
+
+
+
+
+        /* CSS for announcement Marquee */
+        .announcement-bar {
+            background: var(--secondary);
+            padding: 1rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            --secondary: #f9a826;
+        }
+        .marquee {
+            display: flex;
+            animation: marqueeScroll 20s linear infinite;
+        }
+
+
+
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .dot.active {
+            background: rgba(255, 255, 255, 0.9);
+        }
+    </style>
+</head>
+
+
+<!-- this is concerned with java of hamburger -->
+<script src="script.js" defer></script>
+<!-- this is concerned with html of quick links -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+<!-- this is concerned with html for word graphics 
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Bebas+Neue&family=Dancing+Script:wght@700&family=Raleway:wght@800&display=swap" rel="stylesheet">
+this is concerned with html of quick links -->
+
+
+<!-- this is concerned with photo shapes and text containers -->
+<link rel="stylesheet" href="styles.css">
+<script src="scripts.js" defer></script>
+
+
+
+
+<body>
+    <!-- Header -->
+    <header>
+
+
+
+      <!-- Hamburger Button -->
+      <button class="hamburger" aria-label="Menu" aria-expanded="false"> 
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button> 
+      
+      <!-- Navigation Menu --> 
+      <nav class="mobile-nav" aria-hidden="true">
+        <ul>
+          <li><a href="homepage.html">Home</a></li>
+          <li class="submenu">
+            <li><a href="about.html">About</a>
+            <ul>
+              <div class="dropdown-menu"></div>
+                <li><a href="academics.html">Academics</a></li>
+                <li><a href="admissions.html">Admissions</a></li>
+                <li><a href="school-background.html">School-background</a></li>
+                <li><a href="wall of fame.html">Wall of fame</a></li>
+            </ul>
+          </li>
+          <li><a href="team.html">Team</a>
+          <li><a href="location.html">Location</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <!-- Optional: Overlay when menu is open -->
+      <div class="overlay"></div>
+
+
+
+
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="KAJUS-B.jpg"alt="BUDGE">
+                    <h1>KATERERA JUNIOR SCHOOL (KAJUS)</h1>
+                    <nav class="navbar">
+                        <div class="hamburger" onclick="toggleMenu()">
+                          <div class="bar"></div>
+                          <div class="bar"></div>
+                          <div class="bar"></div>
+                        </div>
+                </div>
+            
+
+                <div class="nav-links" id="navLinks">
+                    <a href="homepage.html">Home</a>
+                  
+
+                    <div class="menu-container">
+                        <ul class="menu">
+                          <li class="menu-item">
+                            <a href="About.html">About</a>
+                            <ul class="submenu">
+                              <li><a href="academic.html">Academics</a></li>
+                              <li><a href="admission.html">Admissions</a></li>
+                              <li><a href="school.html">School Background</a></li>
+                              <li><a href="wall of fame.html">Wall of fame</a></li>
+                            </ul>
+                          </li>
+                    <a href="team.html">Team</a></li>
+                    <a href="Location.html">Location</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <script src="script.js"></script>
+            </nav>
+        </div>
+    </header>  
+
+     
+
+
+
+
+<!-- combination of html, css snd java operating search box -->
+<div class="footer-search">
+  <h3><marquee behavior="alternate">INSTANT HELP SEARCH</marquee></h3>
+  <div class="search-container">
+    <input type="text" id="dickensSearch" placeholder="Ask about admissions, programs, events...">
+    <button id="searchButton"><i class="fas fa-search"></i></button>
+    <div id="searchResults"></div>
+  </div>
+</div>
+
+<style>
+/* Search Box Styles */
+.footer-search {
+  padding: 20px;
+  background: rgb(244, 3, 180);
+  margin-top: 30px;
+  border-top: 3px solid white;
+}
+
+.search-container {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+#dickensSearch {
+  width: 100%;
+  padding: 12px 20px;
+  border: 2px solid #1a4d8f;
+  border-radius: 30px;
+  font-size: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+#searchButton {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #1a4d8f;
+  visibility: hidden;
+}
+
+#searchResults {
+  display: none;
+  position: absolute;
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin-top: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  z-index: 1000;
+  padding: 10px;
+}
+
+.search-result {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.search-result:last-child {
+  border-bottom: none;
+}
+
+.search-result p {
+  margin-bottom: 5px;
+}
+
+.search-result a {
+  color: #f9a826;
+  font-weight: bold;
+  text-decoration: none;
+}
+</style>
+
+<script>
+// DOM Ready Function
+document.addEventListener('DOMContentLoaded', function() {
+  // Search Index Database - CUSTOMIZE WITH YOUR CONTENT
+  const searchIndex = [
+    {
+      keywords: ['admission', 'apply', 'join', 'enroll'],
+      page: 'admission.html',
+      answer: "Admissions for 2024 are open! Deadline: August 30th. Requirements include academic transcripts and recommendation letters."
+    },
+    {
+      keywords: ['academics', 'programs', 'courses', 'curriculum'],
+      page: 'academic.html',
+      answer: "We offer STEM-focused programs with 12 majors. Our curriculum includes Robotics, Computer Science, and Environmental Science."
+    },
+    {
+      keywords: ['contact', 'email', 'phone', 'message', 'whatsapp', 'call'],
+      page: 'contact.html',
+      answer: "Reach us at (256) 774508192 or email predixdickens@gmail.com. Office hours: 8AM-5PM Mon-Fri."
+    },
+    {
+      keywords: ['staff', 'students', 'sports day', 'activities'],
+      page: 'team.html',
+      answer: "Annual Sports Day: March 15th. Science Fair: April 20-22. For these and more about our team, check out the team page."
+    },
+    {
+      keywords: ['live location', 'found where', 'place', 'location'],
+      page: 'location.html',
+      answer: "We are located in Katerera Rubrizi district. Visit location page to locate us live."
+    },
+    {
+      keywords: ['background', 'existence', 'since when', 'years'],
+      page: 'school.html',
+      answer: "The school has been in existence since 1998. Visit school background page for more."
+    },
+    {
+      keywords: ['previous', 'home', 'quick links', 'main information'],
+      page: 'homepage.html',
+      answer: "Kindly go through our homepage to locate what exactly you are looking for. Or you can scroll down to quick links."
+    },
+    {
+      keywords: ['school background', 'apply/join'],
+      page: 'about.html',
+      answer: "Check out the about page and it's sub-pages for more, thank you."
+    }
+  ];
+
+  // Get DOM elements
+  const searchInput = document.getElementById('dickensSearch');
+  const searchButton = document.getElementById('searchButton');
+  const searchResults = document.getElementById('searchResults');
+
+  // Debugging check
+  if (!searchInput || !searchButton || !searchResults) {
+    console.error('Search elements not found! Check your HTML IDs');
+    return;
+  }
+
+  // Search function
+  function performSearch() {
+    const query = searchInput.value.trim().toLowerCase();
+    searchResults.innerHTML = '';
+    
+    if (!query) {
+      searchResults.style.display = 'none';
+      return;
+    }
+
+    // Find matches
+    const matches = searchIndex.filter(item => 
+      item.keywords.some(keyword => query.includes(keyword))
+    );
+
+    // Display results
+    if (matches.length > 0) {
+      matches.forEach(match => {
+        searchResults.innerHTML += `
+          <div class="search-result">
+            <p>${match.answer}</p>
+            <a href="${match.page}">Click for More</a>
+          </div>
+        `;
+      });
+      searchResults.style.display = 'block';
+    } else {
+      searchResults.innerHTML = `
+        <div class="search-result">
+          <p>No results found for "${query}". Try searching for:</p>
+          <ul>
+            <li>Admissions</li>
+            <li>Programs</li>
+            <li>Team/Staff/Apply</li>
+            <li>Academics</li>
+            <li>School background</li>
+            <li>Location</li>
+            <li>Contact</li>
+          </ul>
+        </div>
+      `;
+      searchResults.style.display = 'block';
+    }
+  }
+
+  // Event listeners
+  searchButton.addEventListener('click', performSearch);
+  searchInput.addEventListener('input', performSearch);
+  searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') performSearch();
+  });
+
+  // Close results when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.search-container')) {
+      searchResults.style.display = 'none';
+    }
+  });
+  
+  console.log('Search system initialized successfully!');
+});
+</script>
+<!-- combination of html, css snd java operating search box end here -->
+
+
+
+   
+   
+   
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide">
+                <img src="IMG-20231204-WA0137.jpg" alt="Slide 1">
+            </div>
+            <div class="slide">
+              <img src="IMG-20231204-WA0148.jpg" alt="Slide 2">
+            </div>
+            <div class="slide">
+                <img src="IMG-20231204-WA0155.jpg" alt="Slide 3">
+                </div>
+                <div class="slide">
+                    <img src="IMG-20231204-WA0163.jpg" alt="Slide 4">
+                    </div>
+            <div class="slide">
+                        <img src="IMG-20231204-WA0169.jpg" alt="Slide 5">
+                        </div>
+            </div>
+        </div>
+
+        <button class="prev-btn">❮</button>
+        <button class="next-btn">❯</button>
+        
+        <div class="dots-container"></div>
+    </div>
+
+
+
+        <!-- Announcement Marquee -->
+        <div class="announcement-bar">
+          <div class="marquee">
+            <marquee behavior="flex">🎓 Admissions Open 2024 | 📅 Sports Day: 15th March | 🏆 Inter-school Science Fair Winners!</marquee>
+           
+
+
+            <!-- Open House Announcement (Homepage) -->
+<div class="ad-banner">
+    <div class="ad-content">
+        <span class="ad-badge">Event</span>
+        <h3>Annual Open House</h3>
+        <p>Saturday, November 18th • 10AM-2PM</p>
+        <p>Meet our teachers, tour our facilities, and discover the Dickens difference!</p>
+        <button class="ad-button">RSVP Now</button>
+    </div>
+    <div class="IMG-20231204-WA0177.jpg" style="background-image: url('IMG-20250422-171049.jpg.jpg');"></div>
+</div>
+
+<style>
+.ad-banner {
+    display: flex;
+    background: rgb(232, 231, 245);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    max-width: 300px;
+    margin: 20px auto;
+    padding: 25px;
+    text-align: center;
+}
+
+.ad-content {
+    padding: 30px;
+    flex: 1;
+    position: relative;
+}
+
+.ad-badge {
+    background: #e74c3c;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.ad-content h3 {
+    color: #2c3e50;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.ad-content p {
+    color: #7f8c8d;
+    margin-bottom: 15px;
+}
+
+.ad-button {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.ad-button:hover {
+    background: #219653;
+}
+
+.ad-image {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    min-height: 250px;
+}
+
+@media (max-width: 768px) {
+    .ad-banner {
+        flex-direction: column;
+    }
+}
+</style>
+
+<!--  Floating Quote Box (Homepage) -->
+<div class="quote-box">
+    <div class="quote-mark">"</div>
+    <p class="quote-text">At Dickens Jr School, we nurture curious minds and kind hearts to become tomorrow's leaders.</p>
+    <p class="quote-author">— Headmaster Johnson</p> 
+</div>
+
+<style>
+.quote-box {
+    background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+    color: white;
+    padding: 25px;
+    border-radius: 10px;
+    max-width: 300px;
+    margin: 20px auto;
+    position: flex;
+    box-shadow: 0 5px 15px rgba(110, 72, 170, 0.3);
+    text-align: center;
+}
+
+.quote-mark {
+    font-size: 60px;
+    line-height: 40px;
+    color: rgba(255,255,255,0.2);
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.quote-text {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    padding-left: 40px;
+}
+
+.quote-author {
+    text-align: right;
+    font-style: italic;
+}
+</style>
+
+
+
+<!-- Modern Card with Icon (Admission Page) -->
+<div class="info-card">
+    <div class="card-icon">📚</div>
+    <h3>Admission Process</h3>
+    <p>We welcome applications year-round. 
+      Our admission process includes a school tour, application submission, and student assessment.</p>
+    <a href="admission.html" class="card-button">Apply Now</a>
+</div>
+
+<style>
+.info-card {
+    background: rgb(220, 220, 236);
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    max-width: 300px;
+    text-align: center;
+    transition: transform 0.3s;
+    margin: 20px auto;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.info-card h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.info-card p {
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+
+.card-button {
+    display: inline-block;
+    background: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.card-button:hover {
+    background: #2980b9;
+}
+</style>
+          </div>
+      </div>
+
+
+
+
+
+
+
+
+    <!-- HTML for the word graphics 
+<section class="hero-container">
+  <div class="hero-content">
+    <div class="text-reveal">
+      <h1 class="future-3d">For a Secure Future</h1>
+      <div class="floating-text">
+        <p class="school-title">School of a Kind</p>
+        <div class="rotating-badge">
+        </div>
+      </div>
+      <h2 class="leading-text">Leading School<br>in Western Uganda</h2>
+      <div class="motto-container">
+        <p class="motto-1">We Lead While Others Follow</p>
+        <p class="motto-2">since 1998</p>
+      </div>
+    </div>
+    <div class="hero-graphic">
+      <div class="glowing-orb"></div>
+      <div class="abstract-shape"></div>
+    </div>
+  </div>
+</section>
+ HTML for the word graphics ends here -->
+
+
+<script>
+    const slider = document.querySelector('.slider');
+    const sliderContainer = document.querySelector('.slider-container');
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const dotsContainer = document.querySelector('.dots-container');
+    
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+
+    // Create dots
+    slides.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+    });
+
+    function goToSlide(index) {
+        if (index < 0) index = totalSlides - 1;
+        if (index >= totalSlides) index = 0;
+        
+        currentIndex = index;
+        slider.style.transform = `translateX(-${index * 100}%)`;
+        
+        // Update dots
+        document.querySelectorAll('.dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
+        });
+    }
+
+    function nextSlide() {
+        goToSlide(currentIndex + 1);
+    }
+
+    function prevSlide() {
+        goToSlide(currentIndex - 1);
+    }
+
+    // Button click events
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+
+    // Auto-play (optional)
+    let autoPlay = setInterval(nextSlide, 5000);
+
+    // Pause on hover
+    sliderContainer.addEventListener('mouseenter', () => clearInterval(autoPlay));
+    sliderContainer.addEventListener('mouseleave', () => {
+        autoPlay = setInterval(nextSlide, 5000);
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') nextSlide();
+        if (e.key === 'ArrowLeft') prevSlide();
+    });
+</script>
+
+
+
+<!-- Hexagonal Photo Grid (Homepage) -->
+<div class="hexagon-grid">
+    <div class="hexagon">
+        <div class="hexagon-inner">
+            <div class="hexagon-img" style="background-image: url('IMG-20231204-WA0163.jpg');"></div>
+        </div>
+    </div>
+    <div class="hexagon">
+        <div class="hexagon-inner">
+            <div class="hexagon-img" style="background-image: url('IMG-20231204-WA0163.jpg');"></div>
+        </div>
+    </div>
+    <!-- Add more hexagons as needed -->
+</div>
+
+<style>
+.hexagon-grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 350px;
+    margin: 0 auto;
+}
+
+.hexagon {
+    width: 100px;
+    height: 110px;
+    margin: 0 5px 10px;
+    position: relative;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.hexagon-inner {
+    width: 100%;
+    height: 100%;
+    background: #fee902;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hexagon-img {
+    width: 95%;
+    height: 95%;
+    background-size: cover;
+    background-position: center;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+</style>
+
+
+
+
+
+<!-- Video Container (Homepage) -->
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="video-caption">
+        <h3>Take a Virtual Tour</h3>
+        <p>Experience our vibrant learning environment from the comfort of your home.</p>
+    </div>
+</div>
+
+<style>
+.video-container {
+    max-width: 800px;
+    margin: 40px auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-caption {
+    background: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.video-caption h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.video-caption p {
+    color: #7f8c8d;
+}
+</style>
+
+
+<!-- Interactive Game for Homepage -->
+<div class="trivia-game">
+    <h2>Dickens Jr School Trivia</h2>
+    <div class="game-container" id="gameContainer">
+        <div class="question-box" id="questionBox">
+            <p id="question">Loading questions...</p>
+        </div>
+        <div class="options-box" id="optionsBox"></div>
+        <div class="score-box">
+            Score: <span id="score">0</span>
+        </div>
+        <button class="next-button" id="nextButton" disabled>Next Question</button>
+    </div>
+    <div class="game-result" id="gameResult" style="display: none;"></div>
+</div>
+
+<style>
+.trivia-game {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 25px;
+    max-width: 600px;
+    margin: 40px auto;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.trivia-game h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.question-box {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.question-box p {
+    font-size: 18px;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.options-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.option-button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.option-button:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+.option-button.correct {
+    background: #27ae60;
+}
+
+.option-button.wrong {
+    background: #e74c3c;
+}
+
+.score-box {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.next-button {
+    background: #9b59b6;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.next-button:hover {
+    background: #8e44ad;
+}
+
+.next-button:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+}
+
+.game-result {
+    font-size: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+@media (max-width: 500px) {
+    .options-box {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<script>
+const questions = [
+    {
+        question: "What year was Dickens Jr School founded?",
+        options: ["1985", "1998", "1997", "2003"],
+        answer: "1998"
+    },
+    {
+        question: "What is our school mascot?",
+        options: ["Eagle", "Lion", "Owl", "Dolphin"],
+        answer: "Owl"
+    },
+    {
+        question: "Which of these is NOT one of our core values?",
+        options: ["Excellence", "Creativity", "Competition", "Community"],
+        answer: "Competition"
+    },
+    {
+        question: "How many students graduated with honors last year?",
+        options: ["42", "57", "63", "71"],
+        answer: "57"
+    },
+    {
+        question: "What's our most popular extracurricular activity?",
+        options: ["Chess Club", "Robotics", "Drama", "Debate"],
+        answer: "Robotics"
+    }
+];
+
+let currentQuestion = 0;
+let score = 0;
+let selectedOption = null;
+
+const questionBox = document.getElementById('questionBox');
+const questionElement = document.getElementById('question');
+const optionsBox = document.getElementById('optionsBox');
+const scoreElement = document.getElementById('score');
+const nextButton = document.getElementById('nextButton');
+const gameContainer = document.getElementById('gameContainer');
+const gameResult = document.getElementById('gameResult');
+
+function loadQuestion() {
+    const question = questions[currentQuestion];
+    questionElement.textContent = question.question;
+    
+    optionsBox.innerHTML = '';
+    question.options.forEach(option => {
+        const button = document.createElement('button');
+        button.textContent = option;
+        button.classList.add('option-button');
+        button.addEventListener('click', () => selectOption(option, button));
+        optionsBox.appendChild(button);
+    });
+    
+    nextButton.disabled = true;
+    selectedOption = null;
+}
+
+function selectOption(option, button) {
+    if (selectedOption !== null) return;
+    
+    selectedOption = option;
+    const question = questions[currentQuestion];
+    
+    // Disable all options
+    document.querySelectorAll('.option-button').forEach(btn => {
+        btn.disabled = true;
+    });
+    
+    if (option === question.answer) {
+        button.classList.add('correct');
+        score++;
+        scoreElement.textContent = score;
+    } else {
+        button.classList.add('wrong');
+        // Highlight correct answer
+        document.querySelectorAll('.option-button').forEach(btn => {
+            if (btn.textContent === question.answer) {
+                btn.classList.add('correct');
+            }
+        });
+    }
+    
+    nextButton.disabled = false;
+}
+
+function nextQuestion() {
+    currentQuestion++;
+    if (currentQuestion < questions.length) {
+        loadQuestion();
+    } else {
+        endGame();
+    }
+}
+
+function endGame() {
+    gameContainer.style.display = 'none';
+    gameResult.style.display = 'block';
+    
+    const percentage = Math.round((score / questions.length) * 100);
+    let message;
+    
+    if (percentage >= 80) {
+        message = `Congratulations! You scored ${score}/${questions.length} (${percentage}%). You know our school well!`;
+    } else if (percentage >= 50) {
+        message = `Good job! You scored ${score}/${questions.length} (${percentage}%). You know quite a bit about our school.`;
+    } else {
+        message = `You scored ${score}/${questions.length} (${percentage}%). Visit our About page to learn more about Dickens Jr School!`;
+    }
+    
+    gameResult.innerHTML = `
+        <h3>Quiz Complete!</h3>
+        <p>${message}</p>
+        <button onclick="restartGame()" class="next-button">Play Again</button>
+    `;
+}
+
+function restartGame() {
+    currentQuestion = 0;
+    score = 0;
+    scoreElement.textContent = score;
+    gameContainer.style.display = 'block';
+    gameResult.style.display = 'none';
+    loadQuestion();
+}
+
+// Initialize game
+loadQuestion();
+nextButton.addEventListener('click', nextQuestion);
+</script>
+
+
+ <!-- Parent Testimonial Carousel (Homepage or Admission Page) -->
+<div class="testimonial-carousel">
+    <h2>What Parents Say</h2>
+    <div class="carousel-container">
+        <div class="carousel-track">
+            <div class="testimonial-slide active">
+                <div class="testimonial-content">
+                    <div class="quote">"The teachers at Dickens Jr School go above and beyond to support each child's unique learning journey."</div>
+                    <div class="author">
+                        <div class="author-image" style="background-image: url('IMG-20250422-171049.jpg.jpg');"></div>
+                        <div class="author-info">
+                            <div class="name">Lisa Thompson</div>
+                            <div class="relation">Parent of 4th grader</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more slides -->
+        </div>
+        <button class="carousel-btn prev">❮</button>
+        <button class="carousel-btn next">❯</button>
+        <div class="carousel-dots"></div>
+    </div>
+</div>
+
+<style>
+.testimonial-carousel {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.testimonial-carousel h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 40px;
+    font-size: 32px;
+}
+
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.testimonial-slide {
+    min-width: 100%;
+    padding: 40px;
+    background: white;
+    box-sizing: border-box;
+    display: none;
+}
+
+.testimonial-slide.active {
+    display: block;
+}
+
+.testimonial-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.quote {
+    font-size: 20px;
+    line-height: 1.6;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.quote::before, .quote::after {
+    content: '"';
+    font-size: 40px;
+    color: #3498db;
+    opacity: 0.3;
+    position: absolute;
+}
+
+.quote::before {
+    top: -20px;
+    left: -30px;
+}
+
+.quote::after {
+    bottom: -40px;
+    right: -30px;
+}
+
+.author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.author-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    border: 3px solid #3498db;
+}
+
+.author-info {
+    text-align: left;
+}
+
+.name {
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.relation {
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.7);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.3s;
+}
+
+.carousel-btn:hover {
+    background: white;
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.dot.active {
+    background: white;
+}
+
+@media (max-width: 600px) {
+    .testimonial-slide {
+        padding: 30px 20px;
+    }
+    
+    .quote {
+        font-size: 18px;
+    }
+    
+    .quote::before {
+        left: -15px;
+    }
+    
+    .quote::after {
+        right: -15px;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const track = document.querySelector('.carousel-track');
+    const slides = Array.from(document.querySelectorAll('.testimonial-slide'));
+    const dotsContainer = document.querySelector('.carousel-dots');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    
+    let currentIndex = 0;
+    
+    // Create dots
+    slides.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+    });
+    
+    const dots = Array.from(document.querySelectorAll('.dot'));
+    
+    function updateCarousel() {
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        // Update active classes
+        slides.forEach((slide, index) => {
+            slide.classList.toggle('active', index === currentIndex);
+        });
+        
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+    
+    function goToSlide(index) {
+        currentIndex = index;
+        updateCarousel();
+    }
+    
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateCarousel();
+    }
+    
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateCarousel();
+    }
+    
+    // Auto-advance every 5 seconds
+    let slideInterval = setInterval(nextSlide, 5000);
+    
+    // Pause on hover
+    const carousel = document.querySelector('.carousel-container');
+    carousel.addEventListener('mouseenter', () => clearInterval(slideInterval));
+    carousel.addEventListener('mouseleave', () => {
+        slideInterval = setInterval(nextSlide, 5000);
+    });
+    
+    // Button events
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') nextSlide();
+        if (e.key === 'ArrowLeft') prevSlide();
+    });
+});
+</script>
+
+
+
+
+<!-- Interactive School Calendar (Homepage or Admission Page) -->
+<div class="school-calendar">
+    <h2>Upcoming Events</h2>
+    <div class="calendar-header">
+        <button id="prevMonth">❮</button>
+        <h3 id="currentMonth">September 2023</h3>
+        <button id="nextMonth">❯</button>
+    </div>
+    <div class="calendar-grid">
+        <div class="calendar-weekdays">
+            <div>Sun</div>
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Wed</div>
+            <div>Thu</div>
+            <div>Fri</div>
+            <div>Sat</div>
+        </div>
+        <div class="calendar-days" id="calendarDays"></div>
+    </div>
+    <div class="calendar-events" id="calendarEvents">
+        <p>Select a date to view events</p>
+    </div>
+</div>
+
+<style>
+.school-calendar {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 5px;
+    background:rgb(230, 225, 249);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.school-calendar h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 32px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header h3 {
+    color: #2c3e50;
+    margin: 0;
+}
+
+.calendar-header button {
+    background: #3498db;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.calendar-header button:hover {
+    background: #2980b9;
+}
+
+.calendar-grid {
+    margin-bottom: 30px;
+}
+
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendar-day {
+    height: 60px;
+    background: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.calendar-day:hover {
+    background: #e9ecef;
+}
+
+.calendar-day.empty {
+    background: transparent;
+    cursor: default;
+}
+
+.calendar-day.today {
+    background: #3498db;
+    color: white;
+    font-weight: bold;
+}
+
+.calendar-day.event-day::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    width: 6px;
+    height: 6px;
+    background: #e74c3c;
+    border-radius: 50%;
+}
+
+.calendar-day.selected {
+    background: #2c3e50;
+    color: white;
+}
+
+.calendar-events {
+    min-height: 150px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.calendar-events h3 {
+    color: #2c3e50;
+    margin-top: 0;
+}
+
+.event-item {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.event-item .event-time {
+    color: #3498db;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.event-item .event-title {
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.event-item .event-desc {
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    .calendar-day {
+        height: 40px;
+        font-size: 14px;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const calendarDays = document.getElementById('calendarDays');
+    const currentMonthElement = document.getElementById('currentMonth');
+    const prevMonthBtn = document.getElementById('prevMonth');
+    const nextMonthBtn = document.getElementById('nextMonth');
+    const calendarEvents = document.getElementById('calendarEvents');
+    
+    let currentDate = new Date();
+    
+    // Sample events data (replace with your actual events)
+    const events = {
+        '2025-06-15': [
+            { time: 'All day', title: 'KISOBA LEAGUE', description: 'meeting of all cohorts play, dine and have fun as we make connections' },
+            { time: '8:00 PM', title: 'School Board Meeting', description: 'Open to all parents in the school auditorium' }
+        ],
+        '2025-09-20': [
+            { time: 'All Day', title: 'Field Trip: Science Museum', description: 'Grades 3-5 visiting the city science center' }
+        ],
+        '202-07-25': [
+            { time: '3:30 PM', title: 'Robotics Club Demo', description: 'See what our robotics team has been working on!' }
+        ]
+    };
+    
+    function renderCalendar() {
+        const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+        const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+        const daysInMonth = lastDay.getDate();
+        const startDay = firstDay.getDay();
+        
+        currentMonthElement.textContent = new Intl.DateTimeFormat('en-US', { 
+            month: 'long', 
+            year: 'numeric' 
+        }).format(currentDate);
+        
+        calendarDays.innerHTML = '';
+        
+        // Empty cells for days before the first day of month
+        for (let i = 0; i < startDay; i++) {
+            const emptyDay = document.createElement('div');
+            emptyDay.classList.add('calendar-day', 'empty');
+            calendarDays.appendChild(emptyDay);
+        }
+        
+        // Days of the month
+        const today = new Date();
+        for (let i = 1; i <= daysInMonth; i++) {
+            const day = document.createElement('div');
+            day.classList.add('calendar-day');
+            day.textContent = i;
+            
+            // Check if today
+            if (currentDate.getMonth() === today.getMonth() && 
+                currentDate.getFullYear() === today.getFullYear() && 
+                i === today.getDate()) {
+                day.classList.add('today');
+            }
+            
+            // Check for events
+            const dateStr = `${currentDate.getFullYear()}-${(currentDate.getMonth()+1).toString().padStart(2, '0')}-${i.toString().padStart(2, '0')}`;
+            if (events[dateStr]) {
+                day.classList.add('event-day');
+            }
+            
+            day.addEventListener('click', () => showEvents(dateStr));
+            calendarDays.appendChild(day);
+        }
+    }
+    
+    function showEvents(dateStr) {
+        // Remove selected class from all days
+        document.querySelectorAll('.calendar-day').forEach(day => {
+            day.classList.remove('selected');
+        });
+        
+        // Add selected class to clicked day
+        const clickedDay = Array.from(document.querySelectorAll('.calendar-day')).find(day => 
+            day.textContent === dateStr.split('-')[2] && !day.classList.contains('empty')
+        );
+        if (clickedDay) clickedDay.classList.add('selected');
+        
+        if (events[dateStr]) {
+            let eventsHTML = `<h3>Events on ${new Date(dateStr).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}</h3>`;
+            
+            events[dateStr].forEach(event => {
+                eventsHTML += `
+                    <div class="event-item">
+                        <div class="event-time">${event.time}</div>
+                        <div class="event-title">${event.title}</div>
+                        <div class="event-desc">${event.description}</div>
+                    </div>
+                `;
+            });
+            
+            calendarEvents.innerHTML = eventsHTML;
+        } else {
+            calendarEvents.innerHTML = `<p>No events scheduled for ${new Date(dateStr).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}</p>`;
+        }
+    }
+    
+    prevMonthBtn.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        renderCalendar();
+    });
+    
+    nextMonthBtn.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        renderCalendar();
+    });
+    
+    // Initial render
+    renderCalendar();
+});
+</script>
+
+
+
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+           
+          
+          <!-- html for Quick Links Section -->
+          <div class="quick-links">
+            <h3>Quick Links</h3>
+            <div class="quick-links-grid">
+              <!-- Home -->
+              <a href="homepage.html" class="quick-link">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+              </a>
+          
+              <!-- About & Subpages -->
+              <div class="quick-link dropdown">
+                <a href="about.html" class="dropdown-toggle">
+                  <i class="fas fa-info-circle"></i>
+                  <span>About</span>
+                </a>
+                <div class="dropdown-menu">
+                  <a href="academic.html"><i class="fas fa-school"></i> Academics</a>
+                  <a href="admission.html"><i class="fas fa-book-open"></i> Admissions</a>
+                  <a href="school.html"><i class="fas fa-sign-in-alt"></i> School background</a>
+                </div>
+              </div>
+          
+              <!-- Team -->
+              <a href="team.html" class="quick-link">
+                <i class="fas fa-users"></i>
+                <span>Team</span>
+              </a>
+          
+              <!-- Location -->
+              <a href="location.html" class="quick-link">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Location</span>
+              </a>
+          
+              <!-- Contact -->
+              <a href="contact.html" class="quick-link">
+                <i class="fas fa-envelope"></i>
+                <span>Contact</span>
+              </a>
+            </div>
+          </div>
+          <!--html for quick links ends here-->
+
+
+            <h2>FOR SECURE FUTURE</h2>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p>&copy; 2025 Software Wizzards.All Rights Reserved.</p>
+            <p> Contact the developer @ 7656676666</p>
+        </div>
+    </footer>
+</body>
+</html>
+
+
+
+
+
+    <!-- JavaScript for Mobile Menu -->
+    <script>
+      const menuToggle = document.getElementById('menuToggle');
+      const navLinks = document.getElementById('navLinks');
+
+      menuToggle.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
+      });
+  </script>
+</body>
+</html>
+
+
+<script>
+  // Toggle Menu
+  const hamburger = document.querySelector('.hamburger');
+  const mobileNav = document.querySelector('.mobile-nav');
+  const overlay = document.querySelector('.overlay');
+  const submenuParents = document.querySelectorAll('.submenu');
+  
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('is-active');
+    mobileNav.classList.toggle('active');
+    overlay.classList.toggle('active');
+    document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : 'auto';
+  
+    // Update aria attributes
+    const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+    hamburger.setAttribute('aria-expanded', !isExpanded);
+    mobileNav.setAttribute('aria-hidden', isExpanded);
+  });
+  
+  // Close menu when clicking overlay
+  overlay.addEventListener('click', () => {
+    hamburger.classList.remove('is-active');
+    mobileNav.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  });
+  
+  // Submenu toggle
+  submenuParents.forEach(parent => {
+    const link = parent.querySelector('a');
+    link.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        parent.classList.toggle('active');
+      }
+    });
+  });
+</script>
+</body>
+</html>

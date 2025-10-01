@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USD to UGX Currency Converter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        header {
+            background: linear-gradient(120deg, #0052D4, #4364F7, #6FB1FC);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .conversion-section {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eaeaea;
+            display: flex;
+            align-items: center;
+        }
+        
+        h2 i {
+            margin-right: 10px;
+            color: #0052D4;
+        }
+        
+        .conversion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .conversion-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .conversion-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .usd-amount {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #0052D4;
+            margin-bottom: 10px;
+        }
+        
+        .ugx-amount {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #28a745;
+            margin: 15px 0;
+        }
+        
+        .exchange-rate {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        .converter {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .input-group {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .input-group select, .input-group input {
+            padding: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .input-group select {
+            flex: 1;
+            margin-right: 10px;
+            background: white;
+        }
+        
+        .input-group input {
+            flex: 2;
+        }
+        
+        .convert-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(120deg, #0052D4, #4364F7);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .convert-btn:hover {
+            background: linear-gradient(120deg, #0040a8, #3251d4);
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #28a745;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            display: none;
+        }
+        
+        .flag {
+            font-size: 2rem;
+            margin: 0 10px;
+        }
+        
+        .info {
+            background: #e7f3ff;
+            border-left: 4px solid #0052D4;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #6c757d;
+            font-size: 0.9rem;
+            background: #f8f9fa;
+        }
+        
+        @media (max-width: 768px) {
+            .conversion-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .input-group {
+                flex-direction: column;
+            }
+            
+            .input-group select {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>USD to UGX Converter</h1>
+            <p class="subtitle">Convert US Dollars to Ugandan Shillings at current exchange rates</p>
+        </header>
+        
+        <div class="content">
+            <div class="conversion-section">
+                <h2><i class="fas fa-exchange-alt"></i> Specific Conversions</h2>
+                <p>Here are the conversions for the amounts you requested:</p>
+                
+                <div class="conversion-grid">
+                    <div class="conversion-card">
+                        <div class="usd-amount">$3 - $10</div>
+                        <div class="flag">🇺🇸 → 🇺🇬</div>
+                        <div class="ugx-amount">UGX 11,100 - 37,000</div>
+                        <div class="exchange-rate">Rate: 1 USD = 3,700 UGX</div>
+                    </div>
+                    
+                    <div class="conversion-card">
+                        <div class="usd-amount">$20 - $50</div>
+                        <div class="flag">🇺🇸 → 🇺🇬</div>
+                        <div class="ugx-amount">UGX 74,000 - 185,000</div>
+                        <div class="exchange-rate">Rate: 1 USD = 3,700 UGX</div>
+                    </div>
+                    
+                    <div class="conversion-card">
+                        <div class="usd-amount">$10 - $100</div>
+                        <div class="flag">🇺🇸 → 🇺🇬</div>
+                        <div class="ugx-amount">UGX 37,000 - 370,000</div>
+                        <div class="exchange-rate">Rate: 1 USD = 3,700 UGX</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="conversion-section">
+                <h2><i class="fas fa-calculator"></i> Currency Converter</h2>
+                <p>Convert any amount between USD and UGX:</p>
+                
+                <div class="converter">
+                    <div class="input-group">
+                        <select id="fromCurrency">
+                            <option value="USD">US Dollar (USD)</option>
+                            <option value="UGX">Ugandan Shilling (UGX)</option>
+                        </select>
+                        <input type="number" id="amount" placeholder="Enter amount" value="1">
+                    </div>
+                    
+                    <div class="input-group">
+                        <select id="toCurrency">
+                            <option value="UGX">Ugandan Shilling (UGX)</option>
+                            <option value="USD">US Dollar (USD)</option>
+                        </select>
+                        <input type="text" id="resultInput" placeholder="Result" readonly>
+                    </div>
+                    
+                    <button class="convert-btn" onclick="convertCurrency()">Convert</button>
+                    
+                    <div class="info">
+                        <i class="fas fa-info-circle"></i> Exchange rate used: 1 USD = 3,700 UGX. Rates may vary slightly based on current market conditions.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Note: Exchange rates are for informational purposes only. Actual rates may vary.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Current exchange rate (approximate as of knowledge cutoff)
+        const exchangeRate = 3700; // 1 USD = 3700 UGX
+        
+        function convertCurrency() {
+            const fromCurrency = document.getElementById('fromCurrency').value;
+            const toCurrency = document.getElementById('toCurrency').value;
+            const amount = parseFloat(document.getElementById('amount').value);
+            
+            if (isNaN(amount)) {
+                alert('Please enter a valid amount');
+                return;
+            }
+            
+            let result;
+            
+            if (fromCurrency === 'USD' && toCurrency === 'UGX') {
+                result = amount * exchangeRate;
+            } else if (fromCurrency === 'UGX' && toCurrency === 'USD') {
+                result = amount / exchangeRate;
+            } else {
+                result = amount; // Same currency
+            }
+            
+            // Format the result
+            if (toCurrency === 'UGX') {
+                result = result.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            } else {
+                result = result.toFixed(2);
+            }
+            
+            document.getElementById('resultInput').value = result;
+        }
+        
+        // Initialize with a conversion
+        window.onload = convertCurrency;
+    </script>
+</body>
+</html>

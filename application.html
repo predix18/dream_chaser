@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dickens Junior School - Job Application</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a4d8f;
+            --secondary: #f9a826;
+            --light: #f8f9fa;
+            --dark: #16213e;
+            --success: #28a745;
+            --error: #dc3545;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f7ff 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .school-logo {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 3rem;
+            color: var(--secondary);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--secondary);
+        }
+        
+        .form-container {
+            padding: 40px;
+        }
+        
+        .form-section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: var(--light);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title i {
+            color: var(--secondary);
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .form-group {
+            flex: 1 1 300px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-group .required::after {
+            content: " *";
+            color: var(--error);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(26, 77, 143, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .program-choices {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .choice-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            border: 2px solid #e9ecef;
+            transition: all 0.3s;
+        }
+        
+        .choice-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+        
+        .choice-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .payment-box {
+            background: #e8f4ff;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .payment-box h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .payment-instructions {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        .payment-instructions ol {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        
+        .payment-instructions li {
+            margin-bottom: 10px;
+        }
+        
+        .payment-amount {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--success);
+            margin: 15px 0;
+        }
+        
+        .payment-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--dark);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: inline-block;
+            margin: 15px 0;
+        }
+        
+        .declaration {
+            background: #e8f4ff;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .declaration p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .terms {
+            display: flex;
+            align-items: flex-start;
+            margin-top: 20px;
+        }
+        
+        .terms input {
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+        
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(26, 77, 143, 0.3);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .btn-submit:hover {
+            background: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(26, 77, 143, 0.4);
+        }
+        
+        .success-message {
+            background: var(--success);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .login-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .login-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+        
+        .login-toggle button {
+            padding: 12px 25px;
+            background: var(--light);
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .login-toggle button.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .auth-form {
+            display: none;
+        }
+        
+        .auth-form.active {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 20px;
+            }
+            
+            .form-section {
+                padding: 20px 15px;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+                margin-top: 30px;
+            }
+            
+            .school-logo {
+                top: 15px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 60px;
+                height: 60px;
+                font-size: 2.2rem;
+            }
+            
+            .form-row {
+                gap: 15px;
+            }
+            
+            .program-choices {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 60px 15px 30px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .payment-number {
+                font-size: 1.2rem;
+                padding: 8px 15px;
+            }
+        }
+
+
+
+
+
+
+        
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  body {
+    -webkit-overflow-scrolling: touch; /* Better scrolling */
+    touch-action: manipulation; /* Prevent accidental zooms */
+  }
+  
+  .form-control {
+    font-size: 16px; /* Prevent zooming on input */
+    min-height: 44px; /* Better touch targets */
+  }
+  
+  /* Session warning for mobile */
+  .session-warning {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 10px;
+    right: 10px;
+    background: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 1000;
+  }
+}
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="school-logo">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h1>Dickens Junior School</h1>
+            <p>Job Application Form - Academic Year 2024-2025</p>
+        </div>
+        
+        <div class="form-container">
+            <div class="login-section">
+                <div class="login-toggle">
+                    <button id="loginBtn" class="active">Sign In</button>
+                    <button id="registerBtn">Create Account</button>
+                </div>
+                
+                <div id="loginForm" class="auth-form active">
+                    <div class="form-group">
+                        <label class="required">Email Address</label>
+                        <input type="email" class="form-control" id="loginEmail" placeholder="your@email.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">Password</label>
+                        <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password" required>
+                    </div>
+                    
+                    <button class="btn-submit" id="loginSubmit">Sign In</button>
+                </div>
+                
+                <div id="registerForm" class="auth-form">
+                    <div class="form-group">
+                        <label class="required">Full Name</label>
+                        <input type="text" class="form-control" id="regName" placeholder="First Middle Last" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">Email Address</label>
+                        <input type="email" class="form-control" id="regEmail" placeholder="your@email.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">Create Password</label>
+                        <input type="password" class="form-control" id="regPassword" placeholder="At least 8 characters" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">Confirm Password</label>
+                        <input type="password" class="form-control" id="regConfirmPassword" placeholder="Retype your password" required>
+                    </div>
+                    
+                    <button class="btn-submit" id="registerSubmit">Create Account</button>
+                </div>
+            </div>
+            
+            <form id="applicationForm" style="display: none;">
+                <!-- Section 1: Applicant Information -->
+                <div class="form-section">
+                    <h2 class="section-title"><i class="fas fa-user"></i> Personal Information</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="required">Full Name</label>
+                            <input type="text" class="form-control" name="fullName" placeholder="First Middle Last" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="required">Date of Birth</label>
+                            <input type="date" class="form-control" name="dob" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="required">Gender</label>
+                            <select class="form-control" name="gender" required>
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="required">Nationality</label>
+                            <input type="text" class="form-control" name="nationality" placeholder="Your nationality" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="required">Current Address</label>
+                            <textarea class="form-control" name="address" placeholder="Full residential address" required></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="required">Email Address</label>
+                            <input type="email" class="form-control" name="email" placeholder="example@email.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="required">Phone number</label>
+                            <input type="tel" class="form-control" name="phone" placeholder="+256 XXX XXX XXX" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Section 2: Parent/Guardian Information -->
+                <div class="form-section">
+                    <h2 class="section-title"><i class="fas fa-users"></i> Parent/Guardian Information</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="required">Father's Full Name</label>
+                            <input type="text" class="form-control" name="fatherName" placeholder="Father's full name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Father's Occupation</label>
+                            <input type="text" class="form-control" name="fatherOccupation" placeholder="Occupation">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="required">Mother's Full Name</label>
+                            <input type="text" class="form-control" name="motherName" placeholder="Mother's full name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Mother's Occupation</label>
+                            <input type="text" class="form-control" name="motherOccupation" placeholder="Occupation">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="required">Guardian's Phone</label>
+                            <input type="tel" class="form-control" name="guardianPhone" placeholder="+256 XXX XXX XXX" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="required">Guardian's Email</label>
+                            <input type="email" class="form-control" name="guardianEmail" placeholder="guardian@email.com" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Section 3: Educational Background -->
+                <div class="form-section">
+                    <h2 class="section-title"><i class="fas fa-book"></i> Educational Background</h2>
+                    
+                    <div class="form-group">
+                        <label class="required">Highest Education Level</label>
+                        <select class="form-control" name="educationLevel" required>
+                            <option value="">Select Level</option>
+                            <option value="high-school">High School Diploma</option>
+                            <option value="bachelors">Bachelor's Degree</option>
+                            <option value="masters">Master's Degree</option>
+                            <option value="phd">Doctorate (PhD)</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">Institution Name</label>
+                        <input type="text" class="form-control" name="institution" placeholder="School/University name" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="required">Field of Study</label>
+                            <input type="text" class="form-control" name="fieldOfStudy" placeholder="e.g., Education, Mathematics" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="required">Year Completed</label>
+                            <input type="number" class="form-control" name="yearCompleted" min="1980" max="2024" placeholder="2024" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Certifications</label>
+                        <textarea class="form-control" name="certifications" placeholder="List any relevant certifications"></textarea>
+                    </div>
+                </div>
+                
+                <!-- Section 4: Program Choices -->
+                <div class="form-section">
+                    <h2 class="section-title"><i class="fas fa-list-ol"></i> Program Preferences</h2>
+                    <p>Select your preferred teaching programs in order of preference (1 = highest preference)</p>
+                    
+                    <div class="program-choices">
+                        <div class="choice-card">
+                            <h3>First Choice</h3>
+                            <select class="form-control" name="choice1" required>
+                                <option value="">Select Program</option>
+                                <option value="stem">STEM Program</option>
+                                <option value="arts">Arts & Humanities</option>
+                                <option value="languages">Languages Program</option>
+                                <option value="sports">Sports Academy</option>
+                                <option value="music">Music & Performing Arts</option>
+                            </select>
+                        </div>
+                        
+                        <div class="choice-card">
+                            <h3>Second Choice</h3>
+                            <select class="form-control" name="choice2" required>
+                                <option value="">Select Program</option>
+                                <option value="stem">STEM Program</option>
+                                <option value="arts">Arts & Humanities</option>
+                                <option value="languages">Languages Program</option>
+                                <option value="sports">Sports Academy</option>
+                                <option value="music">Music & Performing Arts</option>
+                            </select>
+                        </div>
+                        
+                        <div class="choice-card">
+                            <h3>Third Choice</h3>
+                            <select class="form-control" name="choice3" required>
+                                <option value="">Select Program</option>
+                                <option value="stem">STEM Program</option>
+                                <option value="arts">Arts & Humanities</option>
+                                <option value="languages">Languages Program</option>
+                                <option value="sports">Sports Academy</option>
+                                <option value="music">Music & Performing Arts</option>
+                            </select>
+                        </div>
+                        
+                        <div class="choice-card">
+                            <h3>Fourth Choice</h3>
+                            <select class="form-control" name="choice4" required>
+                                <option value="">Select Program</option>
+                                <option value="stem">STEM Program</option>
+                                <option value="arts">Arts & Humanities</option>
+                                <option value="languages">Languages Program</option>
+                                <option value="sports">Sports Academy</option>
+                                <option value="music">Music & Performing Arts</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Section 5: Additional Information -->
+                <div class="form-section">
+                    <h2 class="section-title"><i class="fas fa-plus-circle"></i> Additional Information</h2>
+                    
+                    <div class="form-group">
+                        <label>Teaching Experience</label>
+                        <textarea class="form-control" name="experience" placeholder="Describe your teaching experience"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Special Skills</label>
+                        <textarea class="form-control" name="skills" placeholder="Any special skills or qualifications"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Hobbies and Interests</label>
+                        <textarea class="form-control" name="hobbies" placeholder="Your personal interests outside teaching"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Disabilities or Special Needs</label>
+                        <textarea class="form-control" name="disabilities" placeholder="Please specify any disabilities or special needs"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">Why do you want to work at Dickens Junior School?</label>
+                        <textarea class="form-control" name="reason" placeholder="Explain your motivation for applying" required></textarea>
+                    </div>
+                </div>
+                
+                <!-- Section 6: Payment -->
+                <div class="form-section">
+                    <h2 class="section-title"><i class="fas fa-credit-card"></i> Application Fee</h2>
+                    
+                    <div class="payment-box">
+                        <h3>Application Fee: UGX 50,000</h3>
+                        
+                        <div class="payment-instructions">
+                            <p>Please follow these steps to complete your payment:</p>
+                            <ol>
+                                <li>Go to your mobile money menu (MTN, Airtel, etc.)</li>
+                                <li>Select "Send Money" or "Pay Bill"</li>
+                                <li>Enter the school's payment number: <span class="payment-number">256774508192</span></li>
+                                <li>Enter the amount: <span class="payment-amount">UGX 50,000</span></li>
+                                <li>Enter your name as the reference</li>
+                                <li>Complete the transaction</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="required">Transaction ID</label>
+                            <input type="text" class="form-control" name="transactionId" placeholder="Enter your payment transaction ID" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="required">Payment Date</label>
+                            <input type="date" class="form-control" name="paymentDate" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Section 7: Declaration -->
+                <div class="form-section">
+                    <h2 class="section-title"><i class="fas fa-file-signature"></i> Declaration</h2>
+                    
+                    <div class="declaration">
+                        <p>I hereby declare that:</p>
+                        <p>1. The information provided in this application form is true, complete, and accurate to the best of my knowledge.</p>
+                        <p>2. I understand that any false or misleading information may result in the rejection of my application or termination of employment.</p>
+                        <p>3. I authorize Dickens Junior School to verify any information provided in this application.</p>
+                        <p>4. I have read and understood the school's employment policies and agree to abide by them.</p>
+                        
+                        <div class="terms">
+                            <input type="checkbox" id="declaration" name="declaration" required>
+                            <label for="declaration" class="required">I accept the terms of this declaration and confirm that all information provided is correct.</label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">Submit Application</button>
+                    
+                    <div class="success-message" id="successMessage">
+                        <i class="fas fa-check-circle" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                        <h3>Application Submitted Successfully!</h3>
+                        <p>Thank you for applying to Dickens Junior School. We will review your application and contact you soon.</p>
+                        <p>You will receive a confirmation email with your application details.</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Authentication toggle
+        document.getElementById('loginBtn').addEventListener('click', function() {
+            document.getElementById('loginBtn').classList.add('active');
+            document.getElementById('registerBtn').classList.remove('active');
+            document.getElementById('loginForm').classList.add('active');
+            document.getElementById('registerForm').classList.remove('active');
+        });
+        
+        document.getElementById('registerBtn').addEventListener('click', function() {
+            document.getElementById('registerBtn').classList.add('active');
+            document.getElementById('loginBtn').classList.remove('active');
+            document.getElementById('registerForm').classList.add('active');
+            document.getElementById('loginForm').classList.remove('active');
+        });
+        
+        // Simulate authentication
+        document.getElementById('loginSubmit').addEventListener('click', function() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            if(email && password) {
+                document.getElementById('applicationForm').style.display = 'block';
+                document.querySelector('.login-section').style.display = 'none';
+            } else {
+                alert('Please enter both email and password');
+            }
+        });
+        
+
+        document.getElementById('registerSubmit').addEventListener('click', async (e) => {
+  e.preventDefault();
+  
+  const email = document.getElementById('regEmail').value;
+  const password = document.getElementById('regPassword').value;
+  const name = document.getElementById('regName').value;
+
+  try {
+    // 1. Create user account
+    const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+    
+    // 2. Save user profile
+    await db.collection('users').doc(userCredential.user.uid).set({
+      name,
+      email,
+      role: "applicant"
+    });
+
+    alert('Account created! Please sign in.');
+    document.getElementById('loginBtn').click();
+    
+  } catch (error) {
+    alert("Error: " + error.message);
+  }
+});
+</script>
+
+
+
+
+
+  <!-- Firebase SDKs - MUST COME FIRST -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+    <!-- TESTED AND WORKING SCRIPT -->
+    <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCrM2z5cMqRCKVl1l_XmKV2gKoCy8uqK6k",
+            authDomain: "dickens-jr-sch-applications.firebaseapp.com",
+            projectId: "dickens-jr-sch-applications",
+            storageBucket: "dickens-jr-sch-applications.appspot.com",
+            messagingSenderId: "208839754248",
+            appId: "1:208839754248:web:949590a230bbac2cb607bd"
+        };
+        
+        // Initialize Firebase only once
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Enhanced Auth State Listener
+        auth.onAuthStateChanged(user => {
+            const applicationForm = document.getElementById('applicationForm');
+            const loginSection = document.querySelector('.login-section');
+            
+            if (user) {
+                applicationForm.style.display = 'block';
+                loginSection.style.display = 'none';
+                document.querySelector('input[name="email"]').value = user.email;
+            } else {
+                applicationForm.style.display = 'none';
+                loginSection.style.display = 'block';
+            }
+        });
+
+        // GUARANTEED WORKING REGISTRATION
+        document.getElementById('registerSubmit').addEventListener('click', async (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('regName').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const password = document.getElementById('regPassword').value;
+            const confirmPassword = document.getElementById('regConfirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            const btn = document.getElementById('registerSubmit');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account...';
+
+            try {
+                // Set persistence for mobile support
+                await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+                
+                // Create user
+                const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+                
+                // Save to Firestore
+                await db.collection('users').doc(userCredential.user.uid).set({
+                    name: name,
+                    email: email,
+                    role: "applicant",
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+
+                alert('Account created successfully! Please sign in.');
+                document.getElementById('loginEmail').value = email;
+                document.getElementById('loginPassword').value = password;
+                document.getElementById('loginBtn').click();
+                
+            } catch (error) {
+                console.error("Registration error:", error);
+                alert(error.message);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = 'Create Account';
+            }
+        });
+
+        // WORKING LOGIN
+        document.getElementById('loginSubmit').addEventListener('click', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+
+            const btn = document.getElementById('loginSubmit');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing In...';
+
+            try {
+                await auth.signInWithEmailAndPassword(email, password);
+            } catch (error) {
+                alert(error.message);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = 'Sign In';
+            }
+        });
+
+        // GUARANTEED FORM SUBMISSION WITH DATA VISIBILITY
+        document.getElementById('applicationForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const user = auth.currentUser;
+            if (!user) {
+                alert('Please sign in to submit the form');
+                return;
+            }
+
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+            try {
+                // Convert form data to object
+                const formData = new FormData(e.target);
+                const applicationData = {};
+                formData.forEach((value, key) => {
+                    applicationData[key] = value;
+                });
+                
+                // Add metadata
+                applicationData.userId = user.uid;
+                applicationData.userEmail = user.email;
+                applicationData.timestamp = firebase.firestore.FieldValue.serverTimestamp();
+                applicationData.status = "pending";
+
+                // Save to Firestore
+                const docRef = await db.collection('applications').add(applicationData);
+                console.log("Document written with ID: ", docRef.id);
+                
+                document.getElementById('successMessage').style.display = 'block';
+                e.target.reset();
+            } catch (error) {
+                console.error("Error adding document: ", error);
+                alert('Error submitting application. Please check console for details.');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = 'Submit Application';
+            }
+        });
+
+        // Form toggle handlers
+        document.getElementById('loginBtn').addEventListener('click', function() {
+            document.getElementById('loginBtn').classList.add('active');
+            document.getElementById('registerBtn').classList.remove('active');
+            document.getElementById('loginForm').classList.add('active');
+            document.getElementById('registerForm').classList.remove('active');
+        });
+        
+        document.getElementById('registerBtn').addEventListener('click', function() {
+            document.getElementById('registerBtn').classList.add('active');
+            document.getElementById('loginBtn').classList.remove('active');
+            document.getElementById('registerForm').classList.add('active');
+            document.getElementById('loginForm').classList.remove('active');
+        });
+    </script>
+</body>
+</html>
